@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>loginPage</title>
+    <link rel=stylesheet href="{% static 'css/login.css' %}">
+    <script defer src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div class="countainer">
+            <div class="loginForm">
+                <div class="header">
+                    <p>به کلیکر دانشگاه دامغان<img class="duTitleIcon" src="{% static 'images/du_logo.webp' %}" alt="img"> خوش امدید</p>
+                </div>
+                <div class="main">
+                    <div class="card">
+                        <img class="cardImg" src="{% static 'images/card_student.webp' %}" alt="img">
+                        <img class="smallImage" id="smallImage" src="" alt="">
+                    </div>
+                    <div class="loginInput">
+                        {% csrf_token %}
+                        <form method="post" class="form">
+                            <p>لطفا اطلاعات کارت دانشجویی خود را کامل کنید</p>
+                            <input type="text" name="code" placeholder="" class="username">
+                            <span class="placeH1"> : شماره دانشجویی</span>
+
+                            <span class="dropdown-el">
+                                <div  class="default-option">
+                                    <input type="radio" name="faculty" value="" id="faculty-default" checked>
+                                    <label for="faculty-default">: دانشکده</label>
+                                </div>
+                                {% for faculty in faculties %}
+                                    <input type="radio" name="faculty" value="{{ faculty.id }}" id="faculty-{{ faculty.id }}">
+                                    <label for="faculty-{{ faculty.id }}" class="facultylabel">{{ faculty.name }}</label>
+                                {% endfor %}
+                            </span>
+                            
+                            <button type="button" class="loginBtn">ورود</button>
+                        </form> 
+                    </div>
+                </div>      
+            </div>
+        </div>
+    </main>
+
+    <script src="{% url 'protected_js' 'login.js' %}">var csrfToken = "{{ csrf_token }}";</script>
+</body>
+</html>

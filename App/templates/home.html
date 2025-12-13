@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}صفحه اصلی{% endblock %}
+
+
+{% block scripts %}<script src="{% url 'protected_js' 'home.js' %}" defer></script>{% endblock%}
+
+
+{% block content %}
+<div class="clicker">
+    <div class="score">
+        <img src="{% static 'images/du_logo.webp' %}" alt="DU">
+        <div class="text" id="buttonScore"></div>
+    </div>
+    <div class="duButton">
+        <img src="{% static 'images/top_button.webp' %}" alt="button" class="topButton">
+        <img src="{% static 'images/bottom_button.webp' %}" alt="button" class="bottomButton">
+    </div>
+</div>
+{% endblock %}
+{% block energy %}
+<div class="energy">
+    <div class="energyicon">⚡️</div>
+    <div class="energynumber" id="energyNumber"></div>
+</div>
+{% endblock%}

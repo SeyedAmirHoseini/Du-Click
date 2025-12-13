@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="{% url 'protected_js' 'base.js' %}" defer></script>
+    <script defer src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    {% block scripts %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <span></span>
+        <header>
+            {% block header %}
+            <div class="profile">
+                <div class="image"><img src="" id="profile-photo"></div>
+                <div class="code" id="code"></div>
+            </div>
+            <div class="term" id="term-btn">
+                <div class="termlogo"><img src="{% static 'images/hat.webp' %}" alt="hat"></div>
+                <div class="termtext">term 1</div>
+            </div>
+            {% endblock %}
+        </header>
+        <main>
+            {% block content %}
+
+            {% endblock %}
+            {% block energy %}
+            {% endblock %}
+        </main>
+        <footer>
+            {% block footer %}
+            <div class="toolbar">
+                <div class="leftbar">
+                    <a class="shop" id="shop"><img src="{% static 'images/Vector-4.webp' %}" alt=""></a>
+                    <a class="chart" id="chart-btn"><img src="{% static 'images/Vector-3.webp' %}" alt=""></a>
+                </div>
+                <button class="middlebar" id="middle-bar"><img src="{% static 'images/du_logo.webp' %}" alt="DU"></button>
+                <div class="rightbar">
+                    <a class="ertebat" id="ertebat" href="#"><img src="{% static 'images/Vector-2.webp' %}" alt=""></a>
+                    <a class="prof" id="prof" href="#"><img src="{% static 'images/Vector-1.webp' %}" alt=""></a>
+                </div>
+            </div>
+            {% endblock %}
+        </footer>
+        <span></span>
+    </div>
+    <div id="loading" class="loading-overlay">
+        <div class="loader"></div>
+    </div>
+</body>
+</html>

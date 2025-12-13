@@ -1,0 +1,324 @@
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: Mikhak-bold;
+    src: url('/static/fonts/Mikhak-Bold.ttf');
+}
+p{
+    font-family: Mikhak-bold;
+    color: white;
+}
+.countainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url( '/static/images/background.webp');
+}
+.loginForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 800px;
+    height: 500px;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.3px);
+    -webkit-backdrop-filter: blur(3.3px);
+}
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    width: 800px;
+    height: 500px;
+    
+}
+.loginForm .card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.loginForm .header .duTitleIcon{
+    position: relative;
+    width: 25px;
+    margin-right: 3px;
+    bottom: -10px;
+}
+.loginForm .card .cardImg{
+    width: 500px;
+}
+.loginForm .header p{
+    color: white;
+    font-family:Mikhak-bold ;
+    font-weight: bold;
+}
+.loginForm .loginInput{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loginForm .username{
+    width: 90%;
+    height: 20px;
+    outline: none;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(5, 123, 190);
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.loginForm .username:focus,
+.loginBtn:hover{
+  box-shadow: 0 0 .2rem #fff,
+            0 0 .2rem #fff,
+            0 0 2rem #13b4fe,
+            0 0 0.8rem #13b4fe,
+            0 0 2.8rem #13b4fe,
+            inset 0 0 1.3rem #13b4fe;
+}
+.loginForm .loginInput{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: 0.3s;
+
+}
+.loginForm .loginInput form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.loginForm .loginInput form p{
+    margin-bottom: 40px;
+}
+
+.loginForm .loginInput .placeH1{
+    position: absolute;
+    right: 50px;
+    top: 75px;
+    color: white;
+    font-size: 13px;
+    opacity: 70%;
+    font-family: Mikhak-bold;
+    transition: 0.3s;
+    pointer-events: none;
+}
+.loginForm .username:focus +.placeH1,
+.loginForm .username:not(:placeholder-shown) +.placeH1{
+    top: 43px;
+    opacity: 100%;
+}
+
+.loginInput .loginBtn{
+    width: 80%;
+    height: 35px;
+    outline: none;
+    border:1px solid white;
+    color: white;
+    background-color: rgb(5, 123, 190);
+    font-family: Mikhak-bold;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+
+.dropdown-el {
+    margin-top:20px;
+    width: 95%;
+    opacity: 80%;
+    position:relative;
+    display: inline-block;
+    min-height: 2.5em;
+    max-height:2.5em;
+    overflow:hidden;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    color: #444;
+    border: 1px solid white;
+    outline: none;
+    border-radius: 10px;
+    background-color: rgb(5, 123, 190);
+    transition: 0.3s all ease-in-out;
+    input:focus + label {
+      background: rgb(5, 114, 224);
+    }
+    input {
+      width: 1px;
+      height: 1px;
+      display: inline-block;
+      position: absolute;
+      opacity: 0.01;
+    }
+    label {
+      font-family: Mikhak-bold;
+      font-size: 13px;
+      color: rgb(10, 151, 252);
+      border-top: .06em solid #d9d9d9;
+      display:block;
+      height: 3em;
+      line-height: 3em;
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s color ease-in-out;  
+      &:nth-child(2) {
+        margin-top: 3em;
+        border-top: .06em solid #d9d9d9;
+      }
+    }
+    input:checked + label {
+     color: white;
+      display:block;
+      border-top: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+  
+      &:nth-child(2) {
+        margin-top: 0;
+        position: relative;
+      }
+    }
+    
+    &::after {
+      content:"";
+      position: absolute;
+      right: 0.8em;
+      top: 0.9em;
+      border: .3em solid skyblue;
+      border-color: skyblue transparent transparent transparent;
+      transition: .4s all ease-in-out;
+    }
+    &.expanded {
+      border: .06em solid white;
+      background: #fff;
+      border-radius: .25em;
+      padding: 0;
+      box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
+      max-height:15em;
+      
+      label {
+        border-top: .06em solid #d9d9d9;
+        &:hover {
+          color:rgb(19, 103, 206);
+        }
+      }
+      input:checked + label {
+        color:black;
+      }
+      
+      &::after {
+        transform: rotate(-180deg);
+        top:.55em;
+      }
+    }
+  }
+
+
+
+
+  @media (max-width: 810px){
+    .loginForm .smallImage{
+      width: 17%;
+      max-width: 70px;
+      max-height: 70px;
+    }
+    .main{
+      flex-direction: column;
+      min-width:500px;
+      max-width: 500px;
+    }
+    .countainer{
+      height: 100vh;
+    }
+    .loginForm{
+      height: 100vh;
+      backdrop-filter: blur(0px);
+    }
+    .loginForm .card .cardImg{
+      width:500px;
+    }
+    .loginForm .loginInput{
+      width: 100%;
+    }
+    .loginForm .loginInput form p {
+      margin-bottom: 20px;
+    }
+    .loginForm .loginInput .placeH1{
+      right:120px;
+      top:55px;
+    }
+    .loginForm .username:focus +.placeH1,
+    .loginForm .username:not(:placeholder-shown) +.placeH1{
+      top:25px;
+    }
+  }
+  @media (max-width: 520px){
+    .main{
+      min-width:390px;
+      max-width: 390px;
+    }
+    .loginForm .card .cardImg{
+      width:90%;
+    }
+    .loginForm .loginInput .placeH1{
+      right:70px;
+      top:55px;
+    }
+    
+  }
+  @media (max-width: 431px){
+    .main{
+      min-width:100%;
+      max-width: 100%;
+    }
+    .loginForm{
+      width: 100%;
+    }
+    .loginForm .loginInput{
+      width: 300px;
+    }
+    .loginForm .loginInput .placeH1{
+      right:20px;
+      top:55px;
+    }
+  }
+
+
+.loginForm .card {
+  position: relative; 
+}
+
+.loginForm .card .cardImg {
+  width: 100%;
+  max-width: 500px; 
+  height: auto; 
+}
+
+.loginForm .smallImage {
+  position: absolute; 
+  top: 11%; 
+  left: 9%;
+  width: 16%; 
+  height: auto; 
+  max-width: 100px; 
+  max-height: 100px;
+  border-radius: 0; 
+  object-fit: cover;
+}

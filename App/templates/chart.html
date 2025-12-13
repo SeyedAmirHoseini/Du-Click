@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block scripts %}<script src="{% url 'protected_js' 'chart.js' %}" defer></script>{% endblock%}
+
+{% block content %}
+<div class="chart-container">
+    <table class="chart-table">
+        <thead>
+            <tr>
+                <th>وضعیت</th>
+                <th>پیش نیاز</th>
+                <th>واحد</th>
+                <th>درس</th>
+            </tr>
+        </thead>
+        <tbody id="chart-body">
+            <!-- داده‌ها از JS اضافه می‌شوند -->
+        </tbody>
+    </table>
+</div>
+{% endblock %}
