@@ -28,15 +28,15 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    "e87cf3ba760a.ngrok-free.app"
+    "0a6cd565fdaf.ngrok-free.app"
     ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://e87cf3ba760a.ngrok-free.app"
+    "https://0a6cd565fdaf.ngrok-free.app"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://e87cf3ba760a.ngrok-free.app"
+    "https://0a6cd565fdaf.ngrok-free.app"
 ]
 
 CSRF_COOKIE_SECURE = True  # فقط از طریق HTTPS ارسال شود

@@ -16,4 +16,5 @@ urlpatterns = [
     path('chart/', views.chart, name='chart'),
     path('api/faculty_courses/', views.FacultyCoursesView.as_view(), name='faculty_courses'),
     path('api/current_courses/', views.CurrentCoursesView.as_view(), name='current_courses'),
+    path('profile/', views.profile, name='profile'),
 ]

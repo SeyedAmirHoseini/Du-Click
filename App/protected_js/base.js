@@ -136,7 +136,8 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     middleBar.addEventListener("click", () => navigateWithLoading("/home"));
-
+    profBtn.addEventListener("click", () => navigateWithLoading("/profile"));
+    
     //گرفتن داده ها از سرور و ثبت در لوکال برای استفاده در صفحه بعد
     chartBtn.addEventListener("click", async (e) => {
         e.preventDefault();

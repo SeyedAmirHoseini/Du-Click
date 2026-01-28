@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block scripts %}<script src="{% url 'protected_js' 'profile.js' %}" defer></script>{% endblock%}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profileForm">
+        <div class="card">
+            <div class="cardImageWrap">
+                <img class="cardImg" src="{% static 'images/card_student.webp' %}">
+                <img class="smallImage" id="smallImage" src="">
+                <div id="codeprof"></div>
+                <div id="nameprof"></div>
+                <div id="facultyprof"></div>
+            </div>
+        </div>
+        <div class="profileInput">
+            <div class="firstInput">
+                <input type="text" name="name" placeholder="" class="nameedit" id="name-edit">
+                <label class="label1" for="name-edit"> : نام و نام خانوادگی</label>
+            </div>
+            <div class="secondInput">
+                <input type="text" name="code" placeholder="" class="codeedit" id="code-edit">
+                <label class="label2" for="code-edit"> : شماره دانشجویی</label>
+            </div>
+            <div class="submitInput">
+                <button type="button" class="submitBtn">ثبت</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
