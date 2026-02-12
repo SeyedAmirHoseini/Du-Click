@@ -263,3 +263,45 @@ class CurrentCoursesView(APIView):
 
 def profile(request):
     return render(request, 'profile.html')
+
+
+# views.py
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Student
+from .serializers import StudentNameUpdateSerializer
+
+class UpdateStudentNameAPIView(APIView):
+
+    def post(self, request):
+        telegram_id = request.data.get("telegram_id")
+
+        if not telegram_id:
+            return Response(
+                {"error": "telegram_id ارسال نشده"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            student = Student.objects.get(telegram_id=telegram_id)
+        except Student.DoesNotExist:
+            return Response(
+                {"error": "دانشجو پیدا نشد"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = StudentNameUpdateSerializer(
+            student,
+            data=request.data,
+            partial=True
+        )
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                {"success": True, "message": "نام تغییر کرد"},
+                status=status.HTTP_200_OK
+            )
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

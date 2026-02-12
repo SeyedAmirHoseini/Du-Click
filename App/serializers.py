@@ -135,3 +135,8 @@ class CurrentCourseSerializer(serializers.Serializer):
     credit       = serializers.IntegerField()
     prerequisite = serializers.CharField(allow_null=True)
     professor    = serializers.CharField()
+
+class StudentNameUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+        fields = ["name"]

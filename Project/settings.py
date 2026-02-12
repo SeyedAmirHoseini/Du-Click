@@ -28,22 +28,22 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    "0a6cd565fdaf.ngrok-free.app"
+    "3196-2a01-4f8-1c17-cd87-00-1.ngrok-free.app"
     ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://0a6cd565fdaf.ngrok-free.app"
+    "https://3196-2a01-4f8-1c17-cd87-00-1.ngrok-free.app"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://0a6cd565fdaf.ngrok-free.app"
+    "https://3196-2a01-4f8-1c17-cd87-00-1.ngrok-free.app"
 ]
 
-CSRF_COOKIE_SECURE = True  # فقط از طریق HTTPS ارسال شود
+CSRF_COOKIE_SECURE = True  
 
-CSRF_COOKIE_HTTPONLY = True  # نمی‌توان کوکی CSRF را از جاوااسکریپت خواند
+CSRF_COOKIE_HTTPONLY = True 
 
-SESSION_COOKIE_SECURE = True  # کوکی‌های جلسه فقط از طریق HTTPS ارسال شوند
+SESSION_COOKIE_SECURE = True 
 
 # CSRF_COOKIE_HTTPONLY = False
 

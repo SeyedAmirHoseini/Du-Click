@@ -34,8 +34,8 @@ body {
     display: grid;
     grid-template-rows: 13% 10% minmax(0, 1fr) 8% 6%;
     height: 100vh;
+    min-height: 600px;
 }
-
 
 
 /* ===========================================
@@ -204,7 +204,6 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    flex: 1 1 auto;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -474,59 +473,89 @@ footer {
 }
 
 .profileForm .card {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
     overflow: hidden; 
     width: 100%;
     height: 100%;
 }
 
 .cardImageWrap {
- position: relative;
- display: flex;
- justify-content: center;
-  width: 480px;
-  height: 300px;
-  object-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 430px;
+    height: 300px;
+    object-position: center;
 }
 
 .cardImg {
-  width: 430px;
-  height: 300px;
-object-fit: fill;
-object-position: center;
+    width: 430px;
+    height: 300px;
+    object-position: center;
 }
-
 .smallImage {
-  position: absolute;
-  top: 11%;
-  left: 9%;
-  width: 16%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
+    position: absolute;
+    top: 11%;
+    left: 9%;
+    width: 16%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 
 #codeprof { 
     position:absolute; 
-    top:36%; right:36%; 
+    top:37%; right:36%; 
     z-index: 999; 
     font-size: 11px;
 } 
 
 #nameprof { 
     position:absolute; 
-    top:47%; right:36%;
+    top:48%; right:36%;
     z-index: 999; 
     font-size: 11px;
 }
 
 #facultyprof { 
     position:absolute; 
-    top:65%; right:36%; 
+    top:66%; right:36%; 
     z-index: 999; 
     font-size: 11px;
 }
+
+@media(min-height: 400px){
+    .cardImageWrap {
+        width: 380px;
+        height: 240px;
+    }
+    .cardImg {
+        width: 380px;
+        height: 230px;
+    }
+    #codeprof{
+        top: 35%;
+    }
+    #nameprof{
+        top: 46%;
+    }
+    #facultyprof{
+        top:64%;
+    }
+}
+@media(min-height: 700px){
+    .cardImageWrap {
+    width: 430px;
+    height: 300px;
+    }
+    .cardImg {
+    width: 430px;
+    height: 300px;
+    }
+}
+
+
 
 .profileInput{
     display: grid;
@@ -559,23 +588,35 @@ object-position: center;
 }
 
 .nameedit, .codeedit, .submitBtn{
+    background-color: var(--transparent-color);
+    font-family: var(--font);   
+    border: 2px solid white;
+    color: white;
     direction: ltr;
     width: 85%;
     height: 100%;
     border-radius: 15px;
-    padding-left: 4px;
+    padding-left: 10px;
     
 }
 .submitBtn{
     border-radius: 20px;
+
+    font-size: 16px;
+}
+
+.nameedit:focus, .codeedit:focus{
+    outline: none;
+    box-shadow: none; 
+    border: none;
 }
 
 .nameedit:focus+.label1{
-    top: -20%;
+    top: -11%;
 }
 
 .codeedit:focus+.label2{
-    top: -20%;
+    top: -11%;
 }
 
 .label1, .label2{
@@ -584,7 +625,7 @@ object-position: center;
     padding: 0 4px;
     font-size: 14px;
     line-height: 1;
-    color: #6200EE;
+    color: white;
     transition: all .15s ease-out;
 }
 

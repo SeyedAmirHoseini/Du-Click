@@ -193,7 +193,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const endpoint = `${window.location.origin}/api/update_coin/`;
         navigator.sendBeacon(endpoint, blob);
     }
-cd
     //ارسال خودکار داده ها به سرور
     window.addEventListener('beforeunload', function () {
         sendDataToServer();
