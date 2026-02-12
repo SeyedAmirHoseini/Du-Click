@@ -3,7 +3,7 @@
 =========================================== */
 :root {
     --color: rgb(25, 118, 210);
-    --transparent-color: rgba(25, 118, 210, 0.5);;
+    --transparent-color: rgba(25, 118, 210, 0.5);
     --border: 2px solid white;
     --shadow: 0 4px 20px rgba(255,255,255,0.4);
     --font: Mikhak-Bold;
@@ -15,17 +15,20 @@
 }
 
 @font-face {
-    font-family: Mikhak-bold;
+    font-family: Mikhak-Bold;
     src: url('/static/fonts/Mikhak-Bold.ttf');
 }
 
 body {
     background-image: url('/static/images/background.webp');
+    color: white;
     background-size: cover;
     background-position: center;
     overflow: hidden;
     font-family: var(--font);
 }
+
+
 
 /* ===========================================
 کانتینر اصلی               
@@ -95,6 +98,10 @@ header {
     box-shadow: var(--shadow);
 }
 
+.termlogo{
+    padding: 7px;
+    transform: translateY(3px);
+}
 .termtext {
     font-size: 1.1em;
     font-weight: bold;
@@ -208,6 +215,127 @@ main {
     position: relative;
     overflow: hidden;
 }
+.courses-container {
+    width: 100%;
+    height: 100%;
+    padding: 14px;
+    box-sizing: border-box;
+    display: grid;
+    gap: 10px;
+}
+
+/* موبایل: 3 تا کنار هم */
+@media (max-width: 480px) {
+    .courses-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* موبایل بزرگ */
+@media (min-width: 481px) and (max-width: 768px) {
+    .courses-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* تبلت */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .courses-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+/* دسکتاپ */
+@media (min-width: 1025px) {
+    .courses-container {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+ .course-card {
+    position: relative;
+    background-color: var(--transparent-color);
+    border: 1px solid white;
+    border-radius: 16px;
+    padding: 16px;
+    color: white;
+    min-height: 80px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: 0.25s ease;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+.course-title {
+    margin-bottom: 42px;
+}
+
+.course-card:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+/* غیر فعال */
+.course-card.disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
+    filter: grayscale(20%);
+}
+
+/* اوورلی علامت */
+.status-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 32px;
+    font-weight: bold;
+    border-radius: 18px;
+}
+
+.course-btn {
+    position: absolute;
+    width: 80%;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: none;
+    font-size: 11px;
+    font-family: var(--font);
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--color);
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.course-btn:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+.course-btn:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+/* دکمه غیرفعال */
+.course-btn.disabled {
+    background: #999;
+    color: #444;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
 /* ==========================================
 شروع استایل صفحه home           
 =========================================== */
@@ -292,6 +420,57 @@ main {
     color: white;
     text-align: center;
     line-height: 20px;
+}
+
+/* ===========================================
+                 contact us         
+=========================================== */
+.contact-us {
+    display: flex;
+    justify-content: center; /* وسط چین افقی */
+    align-items: center;    /* وسط چین عمودی */
+    width: 100%;            
+    height: 100%;           
+}
+
+.container-contact {
+    background-color: var(--transparent-color); 
+    direction: rtl;
+    border: 1px solid white; /* استروک سفید */   /* عرض داینامیک بر اساس محتوا */
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); 
+    
+}
+
+/* لوگو */
+.telegram_logo img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+/* متن‌ها */
+#first, #third {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+/* لینک‌ها */
+#second a, #fourth a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px 0;
+    direction: ltr;
+}
+
+#second a:hover, #fourth a:hover {
+    text-decoration: underline;
+
 }
 
 /* ===========================================
@@ -503,6 +682,9 @@ footer {
     object-fit: cover;
 }
 
+#nameprof, #codeprof, #facultyprof{
+    color: black;
+}
 
 #codeprof { 
     position:absolute; 
@@ -629,6 +811,7 @@ footer {
     transition: all .15s ease-out;
 }
 
+
 /* ===========================================
 انیمیشن ها                  
 =========================================== */
@@ -645,3 +828,5 @@ footer {
     from { transform: scale(0.85); opacity: 0; }
     to   { transform: scale(1); opacity: 1; }
 }
+
+

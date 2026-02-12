@@ -116,8 +116,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (path !== '/home') {
         if (path.startsWith('/chart')) chartBtn.classList.add("active");
         else if (path.startsWith('/shop')) shopBtn.classList.add("active");
-        else if (path.startsWith('/ertebat')) ertebatBtn.classList.add("active");
-        else if (path.startsWith('/prof')) profBtn.classList.add("active");
+        else if (path.startsWith('/contact-us')) ertebatBtn.classList.add("active");
+        else if (path.startsWith('/profile')) profBtn.classList.add("active");
     }
 
     //فعال کردنش در صورت کلیک رو آنها
@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     middleBar.addEventListener("click", () => navigateWithLoading("/home"));
     profBtn.addEventListener("click", () => navigateWithLoading("/profile"));
+    ertebatBtn.addEventListener("click", () => navigateWithLoading("/contact-us"));
     
     //گرفتن داده ها از سرور و ثبت در لوکال برای استفاده در صفحه بعد
     chartBtn.addEventListener("click", async (e) => {
@@ -154,6 +155,28 @@ document.addEventListener('DOMContentLoaded', function () {
             const data = await res.json();
             localStorage.setItem("courses", JSON.stringify(data));
             navigateWithLoading("/chart");
+        } catch (err) {
+            console.error(err);
+            alert("خطا در بارگذاری داده‌ها!");
+            if (loading) loading.style.display = "none"; // اگر ارور خورد لودینگی که فعال شده بود رو حذف کن
+        }
+    });
+
+    shopBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (!telegramId) return alert("Telegram ID not found!");
+
+        if (loading) loading.style.display = "flex";
+
+        try {
+            const res = await fetch("/api/faculty_courses/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ telegram_id: telegramId })
+            });
+            const data = await res.json();
+            localStorage.setItem("courses", JSON.stringify(data));
+            navigateWithLoading("/shop");
         } catch (err) {
             console.error(err);
             alert("خطا در بارگذاری داده‌ها!");

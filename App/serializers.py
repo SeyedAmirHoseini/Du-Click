@@ -90,6 +90,12 @@ class ProfessorSerializer(serializers.ModelSerializer):
         model = Professor
         fields = ['id', 'name', 'chance']
 
+class StatusSerializer(serializers.Serializer):
+    passed = serializers.CharField()
+    available = serializers.BooleanField()
+    professor = ProfessorSerializer(allow_null=True)
+
+
 class CourseSerializer(serializers.ModelSerializer):
     professors = ProfessorSerializer(many=True)
     status = serializers.SerializerMethodField()
@@ -104,31 +110,41 @@ class CourseSerializer(serializers.ModelSerializer):
         if "passed_units_counter" not in self.context:
             self.context["passed_units_counter"] = 0
 
+        passed_courses_ids = set(
+            StudentCourse.objects.filter(student=student, passed=True)
+            .values_list('course_id', flat=True)
+        )
+
         sc = StudentCourse.objects.filter(student=student, course=course).first()
 
-        # هنوز برنداشته
         if not sc:
-            return {
+            available = (
+                not course.prerequisite or
+                course.prerequisite.id in passed_courses_ids
+            )
+
+            data = {
                 "passed": "❌",
+                "available": available,
                 "professor": None
             }
 
-        # برداشته ولی پاس نکرده
-        if not sc.passed:
-            return {
+        elif not sc.passed:
+            data = {
                 "passed": "❔",
+                "available": False,
                 "professor": ProfessorSerializer(sc.professor).data
             }
 
-        #تعداد واحد های پاس شده
-        self.context["passed_units_counter"] += course.credits
+        else:
+            self.context["passed_units_counter"] += course.credits
+            data = {
+                "passed": "✅",
+                "available": False,
+                "professor": ProfessorSerializer(sc.professor).data
+            }
 
-        #پاس شده
-        return {
-            "passed": "✅",
-            "professor": ProfessorSerializer(sc.professor).data
-        }
-
+        return StatusSerializer(data).data
 
 class CurrentCourseSerializer(serializers.Serializer):
     course       = serializers.CharField()

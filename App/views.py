@@ -38,16 +38,31 @@ async def webhook(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body.decode('utf-8'))
-
             update = Update.de_json(data, None)
 
             if 'message' in data:
                 message = data['message']
-                print(f"Message received: {message['text']}")
+                text = message.get('text', '')
+                print(f"Message received: {text}")
+
+                # بررسی /start و پارامتر
+                if text.startswith('/start'):
+                    parts = text.split(maxsplit=1)
+                    start_param = parts[1] if len(parts) > 1 else None
+
                 
-                if message['text'] == '/start':
-                    await handle_start_command(update)
-                    return JsonResponse({"status": "success", "message": "Start command executed"})
+                    if start_param == "support":
+                        await handle_support_command(update)
+                        return JsonResponse({"status": "success", "message": "Support command executed"})
+                    else:
+       
+                        await handle_start_command(update)
+                        return JsonResponse({"status": "success", "message": "Start command executed"})
+
+                elif text == '/support':
+                    await handle_support_command(update)
+                    return JsonResponse({"status": "success", "message": "Support command executed"})
+
                 else:
                     await handle_unknown_command(update)
                     return JsonResponse({"status": "success", "message": "Unknown command handled"})
@@ -57,6 +72,7 @@ async def webhook(request):
             return JsonResponse({"status": "error", "message": str(e)}, status=400)
 
     return JsonResponse({"status": "ignored", "message": "Method not allowed, request ignored"}, status=405)
+
 
 
 def protected_js(request, filename):
@@ -305,3 +321,10 @@ class UpdateStudentNameAPIView(APIView):
             )
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+def contact_us(request):
+    return render(request, 'contact_us.html')
+
+def shop(request):
+    return render(request, "shop.html")

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block scripts %}<script src="{% url 'protected_js' 'contact_us.js' %}" defer></script>{% endblock%}
+
+{% block content %}
+<div class="contact-us">
+    <div class="container-contact">
+        <div class="telegram_logo">
+            <img src="{% static 'images/telegram_logo.webp' %}" alt="">
+        </div>
+        <div id="first">
+            جهت ارتباط با ما روی لینک زیر کلیک کنید:
+        </div>
+        <div id="second">
+            <a href="https://t.me/SeyedAmirHosseeini">@DU Click Admin</a>
+        </div>
+        <div id="third">
+            جهت حمایت از تیم توسعه دهنده ربات:
+        </div>
+        <div id="fourth">
+            <a href="https://t.me/DuClick_bot?start=support" id="support-link"> کلیک کنید</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}فروشگاه{% endblock %}
+
+{% block scripts %}<script src="{% url 'protected_js' 'shop.js' %}" defer></script>{% endblock%}
+
+{% block content %}
+<div id="coursesContainer" class="courses-container"></div>
+
+
+{% endblock %}

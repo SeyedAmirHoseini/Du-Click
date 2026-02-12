@@ -17,6 +17,8 @@ urlpatterns = [
     path('api/faculty_courses/', views.FacultyCoursesView.as_view(), name='faculty_courses'),
     path('api/current_courses/', views.CurrentCoursesView.as_view(), name='current_courses'),
     path('profile/', views.profile, name='profile'),
-    path('update/profile', views.UpdateStudentNameAPIView.as_view(), name="update_profile")
+    path('update/profile', views.UpdateStudentNameAPIView.as_view(), name="update_profile"),
+    path('contact-us', views.contact_us, name="contact-us"),
+    path('shop/', views.shop, name="shop")
     
 ]
