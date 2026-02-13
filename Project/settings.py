@@ -28,15 +28,15 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    "3196-2a01-4f8-1c17-cd87-00-1.ngrok-free.app"
+    "4c5f-2a01-4f8-1c17-cd87-00-1.ngrok-free.app"
     ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://3196-2a01-4f8-1c17-cd87-00-1.ngrok-free.app"
+    "https://4c5f-2a01-4f8-1c17-cd87-00-1.ngrok-free.app"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://3196-2a01-4f8-1c17-cd87-00-1.ngrok-free.app"
+    "https://4c5f-2a01-4f8-1c17-cd87-00-1.ngrok-free.app"
 ]
 
 CSRF_COOKIE_SECURE = True  

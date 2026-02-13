@@ -281,13 +281,6 @@ def profile(request):
     return render(request, 'profile.html')
 
 
-# views.py
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .models import Student
-from .serializers import StudentNameUpdateSerializer
-
 class UpdateStudentNameAPIView(APIView):
 
     def post(self, request):
@@ -325,6 +318,7 @@ class UpdateStudentNameAPIView(APIView):
 
 def contact_us(request):
     return render(request, 'contact_us.html')
+
 
 def shop(request):
     return render(request, "shop.html")
